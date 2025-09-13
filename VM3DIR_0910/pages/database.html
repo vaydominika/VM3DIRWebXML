@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adatbázis rendszerek</title>
+    <style>
+        body {
+            background-color: #ffeaf9;
+        }
+
+        .banner {
+            width: 100%;
+            height: 30vh;
+            object-position: 50% 60%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .nav {
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            gap: 200px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #50001b;
+        }
+
+        a:hover {
+            color: #000000;
+            text-decoration: underline;
+        }
+
+        footer {
+            font-weight: bold;
+            color: #50001b;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .info {
+            font-size: 20px;
+            font-weight: bold;
+            color: #50001b;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #50001b;
+            margin: 10px 0;
+            width: 50%;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #50001b;
+        }
+
+        .content-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #50001b;
+        }
+
+        th, td {
+            color: #50001b;
+            padding: 10px;
+            border: 1px solid #50001b;
+            text-align: center;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="kezdolap.html"><img class="banner" src="../assets/infoep.jpg" alt="Infó épület képe"></a>
+    <div class="nav">
+        <a href="database.html"><p>Adatbázis rendszerek</p></a>
+        <a href="webtech1.html"><p>Web technológiák I.</p></a>
+        <a href="csharp.html"><p>C# programozás</p></a>
+    </div>
+
+    <h1>Adatbázis rendszerek</h1>
+    <p>Oktató: Prof. Dr. Kovács László, Szűcs Miklós</p>
+    <p>Kredit: 5</p>
+    <div class="content-row">
+        <div>
+            <p>A tárgy tematikája:</p>
+            <table>
+        <tr>
+            <th>Hét</th>
+            <th>Elmélet</th>
+            <th>Gyakorlat</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Adatkezelés alapfogalmai, adatstruktúra alapok,
+                Adatperzisztencia szintje, a file kezelés struktúrája
+                és funkciói. C alapú filekezelés, Java alapú
+                filekezelés; rendezési algoritmusok</td>
+            <td>File szintű perzisztencia a C
+                nyelvben</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>RDBMS alapfogalmai; DB fejlesztés lépései, SDM
+                modellek áttekintése, ER adatmodell, az ER alapú
+                modellezés lépései</td>
+            <td>File szintű perzisztencia a
+                Java nyelvben</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>ER adatmodellezés módszertana, az EER és UML
+                adatmodellek, tervezés eszközei, dokumentációi</td>
+            <td>Az ER tervezés gyakorlása</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Relációs adatmodell, relációs struktúra és integritási
+                feltételek. ER modell konverziója. SQL DDL elemei.
+                Oracle APEX felület</td>
+            <td>Az ER tervezés gyakorlása.
+                A relációs modell szerkezeti
+                elemek létrehozatala</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Relációs adatmodell műveleti része, relációs
+                algebra. SQL DML és DQL alapok</td>
+            <td>Az ER tervezés gyakorlása.
+                A relációs modell szerkezeti
+                elemek létrehozatala</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>SQL SELECT utasítás alapelemei elemei,
+                kapcsolódás a relációs algebrához, a SELECT
+                utasítás további elemei</td>
+            <td>Relációs adatmodell és
+                relációs algebra gyakorlása.
+                Féléves feladat bemutatása</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>SQL további elemei: dátum kezelés, sztring kezelés.
+                Karakter kódkészletek.Tranzakció elemei, VIEW
+                mechanizmus. Oracle SQLDeveloper felület</td>
+            <td>SQL DML és DQL
+                gyakorlása</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>DBMS rendszerek architektúrája, DB komponensei,
+                fizikai szintű tárolási módszerek, indexelés és
+                hatékonyság elemzés</td>
+            <td>SQL DML és DQL
+                gyakorlása</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Az adatmodellezés problémái, a függőségek
+                szerepe. Normálformák. Dekompozíciós szabályok</td>
+            <td>Normalizálás, SQL
+                gyakorlása</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Az SQLite DBMS architektúra elemei,
+                adminisztrációs alapok, SQLite SQL áttekintése</td>
+            <td>Az SQLite SQL nyelv
+                elemeinek gyakorlása</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>Adatbázisok védelmi modelljei, A DAC védelmi
+                modell, szerepkörök alkalmazása; a MAC védelmi
+                modell elemei</td>
+            <td>Az SQLite SQL nyelv
+                elemeinek gyakorlása,
+                Féléves feladat bemutatása</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>mySQL rendszer struktúrája. Adminisztrációs
+                feladatok és eszközök áttekintése. Adatbázis
+                komponensek</td>
+            <td>Elkészített feladatok
+                bemutatója, védése</td>
+        </tr>
+            </table>
+        </div>
+        <img src="../assets/database.png" alt="Adatbázis rendszerek">
+    </div>
+
+    <p class="info">A forrás: <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ficon%2Fhtml-5_2535518&psig=AOvVaw0TsOs6wjgzktYV7W5iIaqi&ust=1757864020289000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLjw3vGH1o8DFQAAAAAdAAAAABAE" target="_blank">Kép forrása</a></p>
+
+    <div class="divider"></div>
+    <footer>
+        <p>Vay Dominika, VM3DIR, 2025</p>
+    </footer>
+</body>
+</html>
