@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<konferencia>
+  <cim>XML alapjai</cim>
+  <datum>2025.09.17</datum>
+  <helyszin>Miskolci Egyetem</helyszin>
+
+    <eloado>
+      <nev>Dr. Tanár Neve</nev>
+      <lakcim>Miskolc, Valami utca 1.</lakcim>
+      <adoszam>12345678-1-12</adoszam>
+    </eloado>
+
+  <hallgatok>
+    <hallgato>
+      <nev>Vay Dominika</nev>
+      <lakcim>Miskolc, Gépész utca 1.</lakcim>
+    </hallgato>
+
+     <hallgato>
+      <nev>Tóth Mátyás</nev>
+      <lakcim>Miskolc, Gépész utca 1.</lakcim>
+    </hallgato>
+  </hallgatok>
+</konferencia>
