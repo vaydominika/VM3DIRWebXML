@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mozi>
+    <film id="film_id" mufaj="romantikus">
+        <rendezo id="1">
+            <nev>Monika</nev>
+            <fizetes>100000</fizetes>
+        </rendezo>
+
+        <iro id="2">
+            <nev>Kornel</nev>
+            <fizetes>500000</fizetes>
+        </iro>
+
+        <szinesz id="3">
+            <nev>Brad_Pitt</nev>
+            <fizetes>1000000</fizetes>
+        </szinesz>
+    </film>
+</mozi>

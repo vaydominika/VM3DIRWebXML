@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Órarend táblázat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #ffa5df;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mérnökinformatikus BSc Órarend</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Típus</th>
+                    <th>Tárgy</th>
+                    <th>Nap</th>
+                    <th>Időpont</th>
+                    <th>Helyszín</th>
+                    <th>Oktató</th>
+                    <th>Szak</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="eloadas">
+                    <td>01</td>
+                    <td>Előadás</td>
+                    <td class="subject">Elektronika-elektrotechnika</td>
+                    <td class="day">Hétfő</td>
+                    <td class="time">8:00 - 10:00</td>
+                    <td class="location">3. előadó</td>
+                    <td class="instructor">Szabó Norbert</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="eloadas">
+                    <td>02</td>
+                    <td>Előadás</td>
+                    <td class="subject">Web technológiák 1.</td>
+                    <td class="day">Hétfő</td>
+                    <td class="time">10:00 - 12:00</td>
+                    <td class="location">5. előadó</td>
+                    <td class="instructor">Agárdi Anita</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="eloadas">
+                    <td>03</td>
+                    <td>Előadás</td>
+                    <td class="subject">Angol műszaki szaknyelv 1.</td>
+                    <td class="day">Hétfő</td>
+                    <td class="time">12:00 - 14:00</td>
+                    <td class="location">7. előadó</td>
+                    <td class="instructor">Nagyné Varga Orsolya</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="gyakorlat">
+                    <td>04</td>
+                    <td>Gyakorlat</td>
+                    <td class="subject">Web technológiák 1.</td>
+                    <td class="day">Hétfő</td>
+                    <td class="time">14:00 - 16:00</td>
+                    <td class="location">Infó épület 1. emelet 101. terem</td>
+                    <td class="instructor">Agárdi Anita</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="eloadas">
+                    <td>05</td>
+                    <td>Előadás</td>
+                    <td class="subject">Mobil programozási alapok</td>
+                    <td class="day">Hétfő</td>
+                    <td class="time">16:00 - 18:00</td>
+                    <td class="location">Infó épület 1. emelet 101. terem</td>
+                    <td class="instructor">Agárdi Anita</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="gyakorlat">
+                    <td>06</td>
+                    <td>Gyakorlat</td>
+                    <td class="subject">Mobil programozási alapok</td>
+                    <td class="day">Hétfő</td>
+                    <td class="time">18:00 - 20:00</td>
+                    <td class="location">Infó épület 1. emelet 101. terem</td>
+                    <td class="instructor">Agárdi Anita</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="eloadas">
+                    <td>07</td>
+                    <td>Előadás</td>
+                    <td class="subject">Mesterséges Intelligencia alapok</td>
+                    <td class="day">Kedd</td>
+                    <td class="time">10:00 - 12:00</td>
+                    <td class="location">32. előadó</td>
+                    <td class="instructor">Kunné Dr. Tamás Judit, Fazekas Levente Áron</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="gyakorlat">
+                    <td>08</td>
+                    <td>Gyakorlat</td>
+                    <td class="subject">Mesterséges Intelligencia alapok</td>
+                    <td class="day">Kedd</td>
+                    <td class="time">12:00 - 14:00</td>
+                    <td class="location">32. előadó</td>
+                    <td class="instructor">Kunné Dr. Tamás Judit, Fazekas Levente Áron</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="gyakorlat">
+                    <td>09</td>
+                    <td>Gyakorlat</td>
+                    <td class="subject">Elektrotechnika-elektronika</td>
+                    <td class="day">Kedd</td>
+                    <td class="time">14:00 - 16:00</td>
+                    <td class="location">A1/317.</td>
+                    <td class="instructor">Dr. Kozsely Gábor</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="gyakorlat">
+                    <td>10</td>
+                    <td>Gyakorlat</td>
+                    <td class="subject">UNIX rendszergazda</td>
+                    <td class="day">Kedd</td>
+                    <td class="time">17:00 - 19:00</td>
+                    <td class="location">Infó épület 2. emelet 202. terem</td>
+                    <td class="instructor">Dr. Baksa Attila</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="eloadas">
+                    <td>11</td>
+                    <td>Előadás</td>
+                    <td class="subject">UNIX rendszergazda</td>
+                    <td class="day">Szerda</td>
+                    <td class="time">08:00 - 10:00</td>
+                    <td class="location">Infó épület 1. emelet 103. terem</td>
+                    <td class="instructor">Dr. Baksa Attila</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="eloadas">
+                    <td>12</td>
+                    <td>Előadás</td>
+                    <td class="subject">Webes adatkezelő környezetek</td>
+                    <td class="day">Szerda</td>
+                    <td class="time">08:00 - 10:00</td>
+                    <td class="location">A1/310</td>
+                    <td class="instructor">Dr. Kovács László József</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+                <tr class="gyakorlat">
+                    <td>13</td>
+                    <td>Gyakorlat</td>
+                    <td class="subject">Webes adatkezelő környezetek</td>
+                    <td class="day">Szerda</td>
+                    <td class="time">10:00 - 12:00</td>
+                    <td class="location">Infó épület 1. emelet 103. terem</td>
+                    <td class="instructor">Dr. Bednarik László</td>
+                    <td>Mérnökinformatikus BSc</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
