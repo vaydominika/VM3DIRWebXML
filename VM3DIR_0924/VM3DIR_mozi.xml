@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mozi SYSTEM "VM3DIR_mozi.dtd">
+<mozi>
+    <film id="film1" mufaj="akcio">
+        <rendezo id="rendezo1" nev="Monika"/>
+        <szinesz id="szinesz1" nev="Brad Pitt"/>
+        <iro id="iro1"/>
+    </film>
+    
+    <film id="film2" mufaj="vigjatek">
+        <rendezo id="rendezo2" nev="Kornel"/>
+        <szinesz id="szinesz2" nev="Tom Hanks"/>
+        <szinesz id="szinesz3" nev="Julia Roberts"/>
+        <iro id="iro2"/>
+    </film>
+    
+    <film id="film3" mufaj="horror">
+        <rendezo id="rendezo3" nev="Steven Spielberg"/>
+        <szinesz id="szinesz4" nev="Anthony Hopkins"/>
+        <iro id="iro3"/>
+    </film>
+</mozi>
