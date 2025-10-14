@@ -51,7 +51,6 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <!-- Main root element -->
     <xs:element name="VM3DIR_kurzusfelvetel">
         <xs:complexType>
             <xs:sequence>
