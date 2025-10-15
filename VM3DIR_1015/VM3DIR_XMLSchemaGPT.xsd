@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <!-- Gyökérelem -->
+    <xs:element name="VM3DIR_Vendéglátás">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Étterem" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Étterem -->
+    <xs:element name="Étterem">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Név" type="xs:string"/>
+                <xs:element name="Csillag" type="xs:integer"/>
+                <xs:element name="Cím">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Város" type="xs:string"/>
+                            <xs:element name="Utca" type="xs:string"/>
+                            <xs:element name="Házszám" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element ref="Főszakács" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="Szakács" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="Vendég" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="Ékod" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Főszakács -->
+    <xs:element name="Főszakács">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Név" type="xs:string"/>
+                <xs:element name="Életkor" type="xs:integer"/>
+                <xs:element name="Végzettség" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="Fkód" type="xs:string" use="required"/>
+            <xs:attribute name="FK_Ékod" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Szakács -->
+    <xs:element name="Szakács">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Név" type="xs:string"/>
+                <xs:element name="Cím">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Város" type="xs:string"/>
+                            <xs:element name="Utca" type="xs:string"/>
+                            <xs:element name="Házszám" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Részleg" type="xs:string"/>
+                <xs:element ref="Gyakornok" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="Szkód" type="xs:string" use="required"/>
+            <xs:attribute name="FK_Ékod" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Gyakornok -->
+    <xs:element name="Gyakornok">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Név" type="xs:string"/>
+                <xs:element name="Gyakorlat">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Kezdete" type="xs:date"/>
+                            <xs:element name="Időtartama" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Gyákód" type="xs:string" use="required"/>
+            <xs:attribute name="FK_Szkód" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Vendég -->
+    <xs:element name="Vendég">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Név" type="xs:string"/>
+                <xs:element name="Életkor" type="xs:integer"/>
+                <xs:element name="Cím">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Város" type="xs:string"/>
+                            <xs:element name="Utca" type="xs:string"/>
+                            <xs:element name="Házszám" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="Rendelés" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="Vkód" type="xs:string" use="required"/>
+            <xs:attribute name="FK_Ékod" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Rendelés -->
+    <xs:element name="Rendelés">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Összeg" type="xs:decimal"/>
+                <xs:element name="Étel" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="Rkód" type="xs:string" use="required"/>
+            <xs:attribute name="FK_Vkód" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

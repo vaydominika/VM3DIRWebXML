@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VM3DIR_Vendéglátás>
+    <Étterem Ékod="E001">
+        <Név>Aranykanál Étterem</Név>
+        <Csillag>4</Csillag>
+        <Cím>
+            <Város>Budapest</Város>
+            <Utca>Fő utca</Utca>
+            <Házszám>12</Házszám>
+        </Cím>
+
+        <!-- Kapcsolat: Ékod → Főszakács -->
+        <Főszakács Fkód="F001" FK_Ékod="E001">
+            <Név>Kovács Lajos</Név>
+            <Életkor>45</Életkor>
+            <Végzettség>Mesterszakács</Végzettség>
+        </Főszakács>
+
+        <!-- Kapcsolat: Ékod → Szakács -->
+        <Szakács Szkód="S001" FK_Ékod="E001">
+            <Név>Nagy Béla</Név>
+            <Cím>
+                <Város>Budapest</Város>
+                <Utca>Kertész utca</Utca>
+                <Házszám>8</Házszám>
+            </Cím>
+            <Részleg>Melegkonyha</Részleg>
+
+            <!-- Kapcsolat: Szkód → Gyakornok -->
+            <Gyakornok Gyákód="G001" FK_Szkód="S001">
+                <Név>Tóth Anna</Név>
+                <Gyakorlat>
+                    <Kezdete>2025-06-01</Kezdete>
+                    <Időtartama>3 hónap</Időtartama>
+                </Gyakorlat>
+            </Gyakornok>
+        </Szakács>
+
+        <!-- Kapcsolat: Ékod → Vendég -->
+        <Vendég Vkód="V001" FK_Ékod="E001">
+            <Név>Kiss Júlia</Név>
+            <Életkor>32</Életkor>
+            <Cím>
+                <Város>Budapest</Város>
+                <Utca>Duna utca</Utca>
+                <Házszám>14</Házszám>
+            </Cím>
+
+            <!-- Kapcsolat: Vkód → Rendelés -->
+            <Rendelés Rkód="R001" FK_Vkód="V001">
+                <Összeg>2500</Összeg>
+                <Étel>Gulyásleves</Étel>
+            </Rendelés>
+            <Rendelés Rkód="R002" FK_Vkód="V001">
+                <Összeg>1800</Összeg>
+                <Étel>Somlói galuska</Étel>
+            </Rendelés>
+        </Vendég>
+    </Étterem>
+</VM3DIR_Vendéglátás>
