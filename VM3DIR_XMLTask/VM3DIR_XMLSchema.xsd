@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+  <!-- Gyökérelem: A macskamenhely - Ez a macskamenhely fő eleme, itt van benne minden, a cicák, gazdák, dolgozók, állatorvosok meg az összes egészségügyi adat -->
+  <xs:element name="VM3DIR_macskamenhely">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Egészségügyi kartonok -->
+        <xs:element name="egeszsegugyi_karton" type="EgeszsegugyiKartonTipus" minOccurs="1" maxOccurs="unbounded"/>
+        <!-- Örökbefogadások (M:N) -->
+        <xs:element name="orokbefogadas" type="OrokbefogadasTipus" minOccurs="1" maxOccurs="unbounded"/>
+        <!-- Örökbefogadók -->
+        <xs:element name="orokbefogado" type="OrokbefogadoTipus" minOccurs="1" maxOccurs="unbounded"/>
+        <!-- Macskák -->
+        <xs:element name="macska" type="MacskaTipus" minOccurs="1" maxOccurs="unbounded"/>
+        <!-- Alkalmazottak -->
+        <xs:element name="alkalmazott" type="AlkalmazottTipus" minOccurs="1" maxOccurs="unbounded"/>
+        <!-- Állatorvosok -->
+        <xs:element name="allatorvos" type="AllatorvosTipus" minOccurs="1" maxOccurs="unbounded"/>
+        
+      </xs:sequence>
+    </xs:complexType>
+
+    <!-- Elsődleges kulcsok -->
+
+    <!-- Elsődleges kulcs a macskának -->
+    <xs:key name="macska_kulcs">
+      <xs:selector xpath="macska"/>
+      <xs:field xpath="@macska_id"/>
+    </xs:key>
+
+    <!-- Elsődleges kulcs az örökbefogadónak -->
+    <xs:key name="orokbefogado_kulcs">
+      <xs:selector xpath="orokbefogado"/>
+      <xs:field xpath="@orokbefogado_id"/>
+    </xs:key>
+
+    <!-- Elsődleges kulcs az alkalmazottnak -->
+    <xs:key name="alkalmazott_kulcs">
+      <xs:selector xpath="alkalmazott"/>
+      <xs:field xpath="@alkalmazott_id"/>
+    </xs:key>
+
+    <!-- Elsődleges kulcs az állatorvosnak -->
+    <xs:key name="allatorvos_kulcs">
+      <xs:selector xpath="allatorvos"/>
+      <xs:field xpath="@allatorvos_id"/>
+    </xs:key>
+
+    <!-- Elsődleges kulcs az egészségügyi kartonnak -->
+    <xs:key name="karton_kulcs">
+      <xs:selector xpath="egeszsegugyi_karton"/>
+      <xs:field xpath="@karton_id"/>
+    </xs:key>
+
+    <!-- Elsődleges kulcs az örökbefogadásoknak -->
+    <xs:key name="orokbefogadas_kulcs">
+      <xs:selector xpath="orokbefogadas"/>
+      <xs:field xpath="@orokbefogadas_id"/>
+    </xs:key>
+
+    <!-- Idegen kulcsok -->
+
+    <!-- Idegen kulcs: FK(macska) -> PK(alkalmazott) -->
+    <xs:keyref name="macska_alkalmazott_fk" refer="alkalmazott_kulcs">
+      <xs:selector xpath="macska"/>
+      <xs:field xpath="@alkalmazott_ref"/>
+    </xs:keyref>
+
+    <!-- Idegen kulcs: FK(egészségügyi karton) -> PK(macska) -->
+    <xs:keyref name="karton_macska_fk" refer="macska_kulcs">
+      <xs:selector xpath="egeszsegugyi_karton"/>
+      <xs:field xpath="@macska_ref"/>
+    </xs:keyref>
+
+    <!-- Idegen kulcs: FK(egészségügyi karton) -> PK(állatorvos) -->
+    <xs:keyref name="karton_allatorvos_fk" refer="allatorvos_kulcs">
+      <xs:selector xpath="egeszsegugyi_karton"/>
+      <xs:field xpath="@allatorvos_ref"/>
+    </xs:keyref>
+
+    <!-- Idegen kulcs: FK(örökbefogadás) -> PK(macska) -->
+    <xs:keyref name="orokbefogadas_macska_fk" refer="macska_kulcs">
+      <xs:selector xpath="orokbefogadas"/>
+      <xs:field xpath="@macska_ref"/>
+    </xs:keyref>
+
+    <!-- Idegen kulcs: FK(örökbefogadás) -> PK(örökbefogadó) -->
+    <xs:keyref name="orokbefogadas_orokbefogado_fk" refer="orokbefogado_kulcs">
+      <xs:selector xpath="orokbefogadas"/>
+      <xs:field xpath="@orokbefogado_ref"/>
+    </xs:keyref>
+    
+    <!-- 1:1 Macska — Egészségügyi karton (egy macskához 1 karton jár) -->
+    <xs:unique name="karton_macska_unique">
+      <xs:selector xpath="egeszsegugyi_karton"/>
+      <xs:field xpath="@macska_ref"/>
+    </xs:unique>
+  </xs:element>
+
+  <!-- Egyszerű típusok -->
+
+  <!-- ID-k -->
+
+  <!-- Macska ID típusa: string, m betűvel kell kezdődnie, majd számjegyek -->
+  <xs:simpleType name="MacskaIdTipus">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="m\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Örökbefogadó ID típusa: string, o betűvel kell kezdődnie, majd számjegyek -->
+  <xs:simpleType name="OrokbefogadoIdTipus">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="o\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Alkalmazott ID típusa: string, a betűvel kell kezdődnie, majd számjegyek -->
+  <xs:simpleType name="AlkalmazottIdTipus">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="a\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Állatorvos ID típusa: string, ao betűkkel kell kezdődnie, majd számjegyek -->
+  <xs:simpleType name="AllatorvosIdTipus">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="ao\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Egészségügyi karton ID típusa: string, k betűvel kell kezdődnie, majd számjegyek -->
+  <xs:simpleType name="KartonIdTipus">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="k\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Örökbefogadás ID típusa: string, of betűkkel kell kezdődnie, majd számjegyek -->
+  <xs:simpleType name="OrokbefogasIdTipus">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="of\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Nevek -->
+
+  <!-- Név típusa: string, minimum 1 karakter, maximum 100 karakter -->
+  <xs:simpleType name="NevTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Vezetéknév típusa: string, minimum 1 karakter, maximum 50 karakter -->
+  <xs:simpleType name="VezeteknevTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Keresztnév típusa: string, minimum 1 karakter, maximum 50 karakter -->
+  <xs:simpleType name="KeresztnevTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Cím elemei -->
+
+  <!-- Irányítószám típusa: string, pontosan 4 számjegy -->
+  <xs:simpleType name="IranyitoszamTipus">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Város típusa: string, minimum 1 karakter, maximum 50 karakter -->
+  <xs:simpleType name="VarosTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Utca típusa: string, minimum 1 karakter, maximum 100 karakter -->
+  <xs:simpleType name="UtcaTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Házszám típusa: string, minimum 1 karakter, maximum 20 karakter -->
+  <xs:simpleType name="HazszamTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Email címek -->
+
+  <!-- Email cím típusa: string, tartalmaznia kell @ jelet és pontot, valid email formátum -->
+  <xs:simpleType name="EmailTipus">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Telefonszámok -->
+
+  <!-- Telefonszám típusa: string, minimum 1 karakter, maximum 20 karakter -->
+  <xs:simpleType name="TelefonszamTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Dátumok -->
+
+  <!-- Dátum típusa: xs:date formátum (YYYY-MM-DD) -->
+  <xs:simpleType name="DatumTipus">
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
+
+  <!-- Időpont típusa: xs:dateTime formátum (dátum és idő együtt) -->
+  <xs:simpleType name="IdopontTipus">
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+
+  <!-- Macskák -->
+
+  <!-- Macskafajta típusa: string, minimum 1 karakter, maximum 100 karakter -->
+  <xs:simpleType name="FajtaTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Nem típusa: string, csak "hím" vagy "nőstény" értékek lehetnek -->
+  <xs:simpleType name="NemTipus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="hím"/>
+      <xs:enumeration value="nőstény"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Szín típusa: string, minimum 1 karakter, maximum 100 karakter -->
+  <xs:simpleType name="SzinTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Alkalmazottak -->
+
+  <!-- Beosztás típusa: string, minimum 1 karakter, maximum 100 karakter (alkalmazott beosztása) -->
+  <xs:simpleType name="BeosztasTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Fizetés típusa: positiveInteger, minimum 1, maximum 10000000 (forintban) -->
+  <xs:simpleType name="FizetesTipus">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="10000000"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Szakképzettség típusa: string, minimum 1 karakter, maximum 200 karakter (egy szakképzettség neve) -->
+  <xs:simpleType name="SzakkepesitesTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="200"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Rendelő neve típusa: string, minimum 1 karakter, maximum 100 karakter -->
+  <xs:simpleType name="RendeloNeveTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Egészségügyi kartonok -->
+
+  <!-- Kezelés típusa: string, minimum 1 karakter, maximum 200 karakter -->
+  <xs:simpleType name="KezelesTipusaTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="200"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Diagnózis típusa: string, minimum 1 karakter, maximum 500 karakter -->
+  <xs:simpleType name="DiagnozisTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="500"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Gyógyszerek típusa: string, minimum 1 karakter, maximum 500 karakter -->
+  <xs:simpleType name="GyogyszerekTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="500"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Örökbefogadások -->
+
+  <!-- Örökbefogadási díj típusa: positiveInteger, minimum 1 (forintban) -->
+  <xs:simpleType name="OrokbefogasiDijTipus">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Státusz típusa: string, csak "Folyamatban", "Jóváhagyva", "Befejezett", "Visszautasítva" értékek -->
+  <xs:simpleType name="StatuszTipus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Folyamatban"/>
+      <xs:enumeration value="Jóváhagyva"/>
+      <xs:enumeration value="Befejezett"/>
+      <xs:enumeration value="Visszautasítva"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Megjegyzések típusa: string, minimum 1 karakter, maximum 1000 karakter -->
+  <xs:simpleType name="MegjegyzesekTipus">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="1000"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Összetett típusok -->
+
+  <!-- Teljes név komplex típusa: vezetéknév és keresztnév külön elemként -->
+  <xs:complexType name="TeljesNevTipus">
+    <xs:sequence>
+      <xs:element name="vezeteknev" type="VezeteknevTipus"/>
+      <xs:element name="keresztnev" type="KeresztnevTipus"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Cím komplex típusa: irányítószám, város, utca, házszám elemekből áll -->
+  <xs:complexType name="CimTipus">
+    <xs:sequence>
+      <xs:element name="iranyitoszam" type="IranyitoszamTipus"/>
+      <xs:element name="varos" type="VarosTipus"/>
+      <xs:element name="utca" type="UtcaTipus"/>
+      <xs:element name="hazszam" type="HazszamTipus"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Szakképzettségek komplex típusa: több szakképzettség elemet tartalmazhat (minOccurs=1, maxOccurs=unbounded) -->
+  <xs:complexType name="SzakkepesitesekTipus">
+    <xs:sequence>
+      <xs:element name="szakkepesites" type="SzakkepesitesTipus" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Entitás típusok -->
+
+  <!-- Macskák -->
+
+  <!-- Macska komplex típusa: nev, fajta, szuletes_datum, szin, nem, bekerulesi_datum elemekből és macska_id, alkalmazott_ref attribútumokból áll -->
+  <xs:complexType name="MacskaTipus">
+    <xs:sequence>
+      <xs:element name="nev" type="NevTipus"/>
+      <xs:element name="fajta" type="FajtaTipus"/>
+      <xs:element name="szuletes_datum" type="DatumTipus"/>
+      <xs:element name="szin" type="SzinTipus"/>
+      <xs:element name="nem" type="NemTipus"/>
+      <xs:element name="bekerulesi_datum" type="DatumTipus"/>
+    </xs:sequence>
+    <xs:attribute name="macska_id" type="MacskaIdTipus" use="required"/>
+    <xs:attribute name="alkalmazott_ref" type="AlkalmazottIdTipus" use="required"/>
+  </xs:complexType>
+
+  <!-- Örökbefogadók -->
+
+  <!-- Örökbefogadó komplex típusa: teljes_nev, cim, telefonszam, email, szuletes_datum elemekből és orokbefogado_id attribútumból áll -->
+  <xs:complexType name="OrokbefogadoTipus">
+    <xs:sequence>
+      <xs:element name="teljes_nev" type="TeljesNevTipus"/>
+      <xs:element name="cim" type="CimTipus"/>
+      <xs:element name="telefonszam" type="TelefonszamTipus"/>
+      <xs:element name="email" type="EmailTipus"/>
+      <xs:element name="szuletes_datum" type="DatumTipus"/>
+    </xs:sequence>
+    <xs:attribute name="orokbefogado_id" type="OrokbefogadoIdTipus" use="required"/>
+  </xs:complexType>
+
+  <!-- Alkalmazottak -->
+
+  <!-- Alkalmazott komplex típusa: teljes_nev, cim, telefonszam, beosztas, belepes_datuma, fizetes elemekből és alkalmazott_id attribútumból áll -->
+  <xs:complexType name="AlkalmazottTipus">
+    <xs:sequence>
+      <xs:element name="teljes_nev" type="TeljesNevTipus"/>
+      <xs:element name="cim" type="CimTipus"/>
+      <xs:element name="telefonszam" type="TelefonszamTipus"/>
+      <xs:element name="beosztas" type="BeosztasTipus"/>
+      <xs:element name="belepes_datuma" type="DatumTipus"/>
+      <xs:element name="fizetes" type="FizetesTipus"/>
+    </xs:sequence>
+    <xs:attribute name="alkalmazott_id" type="AlkalmazottIdTipus" use="required"/>
+  </xs:complexType>
+
+  <!-- Állatorvosok -->
+
+  <!-- Állatorvos komplex típusa: teljes_nev, szakkepesites (több is lehet), rendelo_neve, telefonszam, email elemekből és allatorvos_id attribútumból áll -->
+  <xs:complexType name="AllatorvosTipus">
+    <xs:sequence>
+      <xs:element name="teljes_nev" type="TeljesNevTipus"/>
+      <xs:element name="szakkepesites" type="SzakkepesitesekTipus"/>
+      <xs:element name="rendelo_neve" type="RendeloNeveTipus"/>
+      <xs:element name="telefonszam" type="TelefonszamTipus"/>
+      <xs:element name="email" type="EmailTipus"/>
+    </xs:sequence>
+    <xs:attribute name="allatorvos_id" type="AllatorvosIdTipus" use="required"/>
+  </xs:complexType>
+
+  <!-- Egészségügyi kartonok -->
+
+  <!-- Egészségügyi karton komplex típusa: datum, kezeles_tipusa, diagnozis, gyogyszerek, kovetkezo_vizsgalat elemekből és karton_id, macska_ref, allatorvos_ref attribútumokból áll -->
+  <xs:complexType name="EgeszsegugyiKartonTipus">
+    <xs:sequence>
+      <xs:element name="datum" type="DatumTipus"/>
+      <xs:element name="kezeles_tipusa" type="KezelesTipusaTipus"/>
+      <xs:element name="diagnozis" type="DiagnozisTipus"/>
+      <xs:element name="gyogyszerek" type="GyogyszerekTipus"/>
+      <xs:element name="kovetkezo_vizsgalat" type="DatumTipus"/>
+    </xs:sequence>
+    <xs:attribute name="karton_id" type="KartonIdTipus" use="required"/>
+    <xs:attribute name="macska_ref" type="MacskaIdTipus" use="required"/>
+    <xs:attribute name="allatorvos_ref" type="AllatorvosIdTipus" use="required"/>
+  </xs:complexType>
+
+  <!-- Örökbefogadások -->
+
+  <!-- Örökbefogadás komplex típusa: orokbefogadas_datuma, orokbefogasi_dij, statusz, megjegyzesek elemekből és orokbefogadas_id, macska_ref, orokbefogado_ref attribútumokból áll -->
+  <xs:complexType name="OrokbefogadasTipus">
+    <xs:sequence>
+      <xs:element name="orokbefogadas_datuma" type="DatumTipus"/>
+      <xs:element name="orokbefogasi_dij" type="OrokbefogasiDijTipus"/>
+      <xs:element name="statusz" type="StatuszTipus"/>
+      <xs:element name="megjegyzesek" type="MegjegyzesekTipus"/>
+    </xs:sequence>
+    <xs:attribute name="orokbefogadas_id" type="OrokbefogasIdTipus" use="required"/>
+    <xs:attribute name="macska_ref" type="MacskaIdTipus" use="required"/>
+    <xs:attribute name="orokbefogado_ref" type="OrokbefogadoIdTipus" use="required"/>
+  </xs:complexType>
+
+</xs:schema>
