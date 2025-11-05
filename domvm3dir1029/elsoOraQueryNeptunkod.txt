@@ -1,0 +1,9 @@
+
+2.) Az első kurzus adatai:
+ID: 01
+Típus: eloadas
+Tantárgy: Elektronika-elektrotechnika
+Időpont: Hétfő 8:00 - 10:00
+Helyszín: 3. előadó
+Oktató: Szabó Norbert
+Szak: Mérnökinformatikus BSc
