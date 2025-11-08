@@ -1,13 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!-- A macskamenhely XML sémája -->
-<VM3DIR_macskamenhely xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                      xsi:noNamespaceSchemaLocation="VM3DIR_XMLSchema.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- A macskamenhely XML sémája --><VM3DIR_macskamenhely xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="VM3DIR_XMLSchema.xsd">
 
   <!-- Egészségügyi kartonok adatai, id, macska_ref (idegen kulcs), allatorvos_ref (idegen kulcs), datum, kezeles_tipusa, diagnozis, gyogyszerek, kovetkezo_vizsgalat -->
 
   <!-- Egészségügyi karton 1 -->
-  <egeszsegugyi_karton karton_id="k1" macska_ref="m1" allatorvos_ref="ao1">
+  <egeszsegugyi_karton allatorvos_ref="ao1" karton_id="k1" macska_ref="m1">
     <datum>2023-08-16</datum>
     <kezeles_tipusa>Általános vizsgálat</kezeles_tipusa>
     <diagnozis>Egészséges, oltások beadva</diagnozis>
@@ -15,15 +12,15 @@
     <kovetkezo_vizsgalat>2024-08-16</kovetkezo_vizsgalat>
   </egeszsegugyi_karton>
 
-  <egeszsegugyi_karton karton_id="k2" macska_ref="m2" allatorvos_ref="ao1">
+  <egeszsegugyi_karton allatorvos_ref="ao1" karton_id="k2" macska_ref="m2">
     <datum>2025-01-11</datum>
     <kezeles_tipusa>Kivételes vizsgálat</kezeles_tipusa>
-    <diagnozis>Betegség, hányás</diagnozis>
+    <diagnozis>Betegség, hányás - gyógyult</diagnozis>
     <gyogyszerek>Betegség ellenszerek</gyogyszerek>
     <kovetkezo_vizsgalat>2025-02-11</kovetkezo_vizsgalat>
   </egeszsegugyi_karton>
 
-  <egeszsegugyi_karton karton_id="k3" macska_ref="m3" allatorvos_ref="ao1">
+  <egeszsegugyi_karton allatorvos_ref="ao1" karton_id="k3" macska_ref="m3">
     <datum>2025-01-11</datum>
     <kezeles_tipusa>Kivételes vizsgálat</kezeles_tipusa>
     <diagnozis>Betegség, láz, fájdalom</diagnozis>
@@ -31,7 +28,7 @@
     <kovetkezo_vizsgalat>2025-03-11</kovetkezo_vizsgalat>
   </egeszsegugyi_karton>
 
-  <egeszsegugyi_karton karton_id="k4" macska_ref="m4" allatorvos_ref="ao2">
+  <egeszsegugyi_karton allatorvos_ref="ao2" karton_id="k4" macska_ref="m4">
     <datum>2025-01-11</datum>
     <kezeles_tipusa>Általános vizsgálat</kezeles_tipusa>
     <diagnozis>Egészséges, oltások beadva</diagnozis>
@@ -42,7 +39,7 @@
   <!-- Örökbefogadások adatai, id, macska_ref (idegen kulcs), orokbefogado_ref (idegen kulcs), orokbefogadas_datuma, orokbefogasi_dij, statusz, megjegyzesek -->
 
   <!-- Örökbefogadás 1 -->
-  <orokbefogadas orokbefogadas_id="of1" macska_ref="m1" orokbefogado_ref="o1">
+  <orokbefogadas macska_ref="m1" orokbefogadas_id="of1" orokbefogado_ref="o1">
     <orokbefogadas_datuma>2025-10-22</orokbefogadas_datuma>
     <orokbefogasi_dij>10000</orokbefogasi_dij>
     <statusz>Befejezett</statusz>
@@ -50,10 +47,10 @@
   </orokbefogadas>
 
   <!-- Örökbefogadás 2 -->
-  <orokbefogadas orokbefogadas_id="of2" macska_ref="m2" orokbefogado_ref="o2">
+  <orokbefogadas macska_ref="m2" orokbefogadas_id="of2" orokbefogado_ref="o2">
     <orokbefogadas_datuma>2025-05-11</orokbefogadas_datuma>
     <orokbefogasi_dij>20000</orokbefogasi_dij>
-    <statusz>Folyamatban</statusz>
+    <statusz>Jóváhagyva</statusz>
     <megjegyzesek>Folyamatban a vizsgálat a megfelelő tartásra</megjegyzesek>
   </orokbefogadas>
 
@@ -96,8 +93,8 @@
   <!-- Macskák adatai, id, nev, fajta, születési dátum, szín, nem, bekerülési dátum, alkalmazott_ref (idegen kulcs) -->
 
   <!-- Macska 1 -->
-  <macska macska_id="m1" alkalmazott_ref="a1">
-    <nev>Foltos</nev>
+  <macska alkalmazott_ref="a1" macska_id="m1">
+    <nev>Cirmos</nev>
     <fajta>Keverék</fajta>
     <szuletes_datum>2023-01-01</szuletes_datum>
     <szin>Fekete-Fehér</szin>
@@ -106,7 +103,7 @@
   </macska>
 
   <!-- Macska 2 -->
-  <macska macska_id="m2" alkalmazott_ref="a1">
+  <macska alkalmazott_ref="a1" macska_id="m2">
     <nev>Zokni</nev>
     <fajta>Keverék</fajta>
     <szuletes_datum>2024-01-01</szuletes_datum>
@@ -116,7 +113,7 @@
   </macska>
 
   <!-- Macska 3 -->
-  <macska macska_id="m3" alkalmazott_ref="a2">
+  <macska alkalmazott_ref="a2" macska_id="m3">
     <nev>Morcos</nev>
     <fajta>Perzsa</fajta>
     <szuletes_datum>2022-01-01</szuletes_datum>
@@ -126,7 +123,7 @@
   </macska>
 
   <!-- Macska 4 -->
-  <macska macska_id="m4" alkalmazott_ref="a3">
+  <macska alkalmazott_ref="a3" macska_id="m4">
     <nev>Rózsa</nev>
     <fajta>Sziámi</fajta>
     <szuletes_datum>2019-01-01</szuletes_datum>
@@ -205,7 +202,7 @@
       <szakkepesites>Orvos diploma</szakkepesites>
     </szakkepesites>
     <rendelo_neve>Orvos Állatklinika</rendelo_neve>
-    <telefonszam>+36301234000</telefonszam>
+    <telefonszam>+36309999999</telefonszam>
     <email>orvos.neve@allatklinika.hu</email>
   </allatorvos>
 
@@ -218,6 +215,9 @@
     <szakkepesites>
       <szakkepesites>Állatorvos diploma</szakkepesites>
       <szakkepesites>Kisállat sebészet</szakkepesites>
+    <szakkepesites>Kardiológia</szakkepesites>
+    <szakkepesites>Kardiológia</szakkepesites>
+    <szakkepesites>Kardiológia</szakkepesites>
     </szakkepesites>
     <rendelo_neve>Orvos 2 Állatklinika</rendelo_neve>
     <telefonszam>+36301234000</telefonszam>
