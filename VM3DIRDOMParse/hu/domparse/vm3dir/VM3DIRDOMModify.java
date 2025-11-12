@@ -3,7 +3,6 @@ package hu.domparse.vm3dir;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -36,8 +35,7 @@ public class VM3DIRDOMModify {
                     Node nevNode = macska.getElementsByTagName("nev").item(0);
                     if (nevNode != null) {
                         String regiNev = nevNode.getTextContent();
-                        nevNode.setTextContent("Cirmos");
-                        System.out.println("  - Macska m1 neve módosítva: '" + regiNev + "' -> 'Cirmos'");
+                        System.out.println("  - Macska m1 neve módosítva lenne: '" + regiNev + "' -> 'Cirmos'");
                     }
                     break;
                 }
@@ -54,8 +52,7 @@ public class VM3DIRDOMModify {
                     Node statuszNode = orokbefogadas.getElementsByTagName("statusz").item(0);
                     if (statuszNode != null) {
                         String regiStatusz = statuszNode.getTextContent();
-                        statuszNode.setTextContent("Jóváhagyva");
-                        System.out.println("  - Örökbefogadás of2 státusza módosítva: '" + regiStatusz + "' -> 'Jóváhagyva'");
+                        System.out.println("  - Örökbefogadás of2 státusza módosítva lenne: '" + regiStatusz + "' -> 'Jóváhagyva'");
                     }
                     break;
                 }
@@ -72,8 +69,7 @@ public class VM3DIRDOMModify {
                     Node telefonszamNode = allatorvos.getElementsByTagName("telefonszam").item(0);
                     if (telefonszamNode != null) {
                         String regiTelefon = telefonszamNode.getTextContent();
-                        telefonszamNode.setTextContent("+36309999999");
-                        System.out.println("  - Állatorvos ao1 telefonszáma módosítva: '" + regiTelefon + "' -> '+36309999999'");
+                        System.out.println("  - Állatorvos ao1 telefonszáma módosítva lenne: '" + regiTelefon + "' -> '+36309999999'");
                     }
                     break;
                 }
@@ -90,8 +86,7 @@ public class VM3DIRDOMModify {
                     Node diagnozisNode = karton.getElementsByTagName("diagnozis").item(0);
                     if (diagnozisNode != null) {
                         String regiDiagnozis = diagnozisNode.getTextContent();
-                        diagnozisNode.setTextContent("Betegség, hányás - gyógyult");
-                        System.out.println("  - Karton k2 diagnózisa módosítva:");
+                        System.out.println("  - Karton k2 diagnózisa módosítva lenne:");
                         System.out.println("    Régi: '" + regiDiagnozis + "'");
                         System.out.println("    Új: 'Betegség, hányás - gyógyult'");
                     }
@@ -108,12 +103,7 @@ public class VM3DIRDOMModify {
                 if ("ao2".equals(allatorvos.getAttribute("allatorvos_id"))) {
                     Element szakkepesitesElem = (Element) allatorvos.getElementsByTagName("szakkepesites").item(0);
                     if (szakkepesitesElem != null) {
-                        // Új szakképzettség elem létrehozása
-                        Element ujSzakkepesites = doc.createElement("szakkepesites");
-                        ujSzakkepesites.appendChild(doc.createTextNode("Kardiológia"));
-                        szakkepesitesElem.appendChild(ujSzakkepesites);
-                        
-                        System.out.println("  - Új szakképzettség hozzáadva az állatorvos ao2-hez: 'Kardiológia'");
+                        System.out.println("  - Új szakképzettség hozzáadva lenne az állatorvos ao2-hez: 'Kardiológia'");
                     }
                     break;
                 }
@@ -121,22 +111,15 @@ public class VM3DIRDOMModify {
             
             System.out.println("\n");
             
-            // Transformer beállítása módosított XML kiíráshoz
+            // Transformer beállítása XML konzolra való íráshoz
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             
             DOMSource source = new DOMSource(doc);
             
-            // Konzolra írás
-            System.out.println("=== MÓDOSÍTOTT XML TARTALOM ===\n");
-            StreamResult consoleResult = new StreamResult(System.out);
-            transformer.transform(source, consoleResult);
-            
-            // Eredeti fájl felülírása
-            StreamResult fileResult = new StreamResult(inputFile);
-            transformer.transform(source, fileResult);
-            
-            System.out.println("\n\nA módosított dokumentum sikeresen elmentve: VM3DIR_XMLTask/VM3DIR_XML.xml");
+            System.out.println("\n=== XML TARTALOM KONZOLRA ===");
+            StreamResult result = new StreamResult(System.out);
+            transformer.transform(source, result);
             
         } catch (Exception e) {
             e.printStackTrace();
