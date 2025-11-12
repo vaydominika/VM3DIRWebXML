@@ -46,13 +46,14 @@ public class VM3DIRDOMQuery {
                 
                 if (statuszNode != null && "Befejezett".equals(statuszNode.getTextContent())) {
                     befejezettCount++;
-                    String orokbefogadasId = orokbefogadas.getAttribute("orokbefogadas_id");
                     String macskaRef = orokbefogadas.getAttribute("macska_ref");
+                    String orokbefogadoRef = orokbefogadas.getAttribute("orokbefogado_ref");
                     Node datumNode = orokbefogadas.getElementsByTagName("orokbefogadas_datuma").item(0);
                     Node dijNode = orokbefogadas.getElementsByTagName("orokbefogasi_dij").item(0);
                     
-                    System.out.println("  - Örökbefogadás ID: " + orokbefogadasId);
+                    System.out.println("  - Örökbefogadás (Macska: " + macskaRef + ", Örökbefogadó: " + orokbefogadoRef + ")");
                     System.out.println("    Macska ref: " + macskaRef);
+                    System.out.println("    Örökbefogadó ref: " + orokbefogadoRef);
                     if (datumNode != null) {
                         System.out.println("    Dátum: " + datumNode.getTextContent());
                     }
@@ -143,8 +144,8 @@ public class VM3DIRDOMQuery {
             
             System.out.println("\n");
             
-            // 5. lekérdezés (bónusz): Örökbefogadók, akik Miskolcon laknak
-            System.out.println("5. LEKÉRDEZÉS (BÓNUSZ): Örökbefogadók, akik Miskolcon laknak\n");
+            // 5. lekérdezés: Örökbefogadók, akik Miskolcon laknak
+            System.out.println("5. LEKÉRDEZÉS: Örökbefogadók, akik Miskolcon laknak\n");
             NodeList orokbefogadoList = doc.getElementsByTagName("orokbefogado");
             for (int i = 0; i < orokbefogadoList.getLength(); i++) {
                 Element orokbefogado = (Element) orokbefogadoList.item(i);

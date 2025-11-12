@@ -10,8 +10,8 @@
       <xs:sequence>
         <!-- Egészségügyi kartonok -->
         <xs:element name="egeszsegugyi_karton" type="EgeszsegugyiKartonTipus" minOccurs="1" maxOccurs="unbounded"/>
-        <!-- Örökbefogadások (M:N) -->
-        <xs:element name="orokbefogadas" type="OrokbefogadasTipus" minOccurs="1" maxOccurs="unbounded"/>
+        <!-- Örökbefogadások (kapcsoló entitás, ID nélkül) -->
+        <xs:element name="orokbefogadas" type="OrokbefogadasTipus" minOccurs="0" maxOccurs="unbounded"/>
         <!-- Örökbefogadók -->
         <xs:element name="orokbefogado" type="OrokbefogadoTipus" minOccurs="1" maxOccurs="unbounded"/>
         <!-- Macskák -->
@@ -54,12 +54,6 @@
     <xs:key name="karton_kulcs">
       <xs:selector xpath="egeszsegugyi_karton"/>
       <xs:field xpath="@karton_id"/>
-    </xs:key>
-
-    <!-- Elsődleges kulcs az örökbefogadásoknak -->
-    <xs:key name="orokbefogadas_kulcs">
-      <xs:selector xpath="orokbefogadas"/>
-      <xs:field xpath="@orokbefogadas_id"/>
     </xs:key>
 
     <!-- Idegen kulcsok -->
@@ -137,13 +131,6 @@
   <xs:simpleType name="KartonIdTipus">
     <xs:restriction base="xs:string">
       <xs:pattern value="k\d+"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <!-- Örökbefogadás ID típusa: string, of betűkkel kell kezdődnie, majd számjegyek -->
-  <xs:simpleType name="OrokbefogasIdTipus">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="of\d+"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -456,7 +443,7 @@
 
   <!-- Örökbefogadások -->
 
-  <!-- Örökbefogadás komplex típusa: orokbefogadas_datuma, orokbefogasi_dij, statusz, megjegyzesek elemekből és orokbefogadas_id, macska_ref, orokbefogado_ref attribútumokból áll -->
+  <!-- Örökbefogadás komplex típusa (kapcsoló entitás, ID nélkül): orokbefogadas_datuma, orokbefogasi_dij, statusz, megjegyzesek elemekből és macska_ref, orokbefogado_ref attribútumokból áll -->
   <xs:complexType name="OrokbefogadasTipus">
     <xs:sequence>
       <xs:element name="orokbefogadas_datuma" type="DatumTipus"/>
@@ -464,7 +451,6 @@
       <xs:element name="statusz" type="StatuszTipus"/>
       <xs:element name="megjegyzesek" type="MegjegyzesekTipus"/>
     </xs:sequence>
-    <xs:attribute name="orokbefogadas_id" type="OrokbefogasIdTipus" use="required"/>
     <xs:attribute name="macska_ref" type="MacskaIdTipus" use="required"/>
     <xs:attribute name="orokbefogado_ref" type="OrokbefogadoIdTipus" use="required"/>
   </xs:complexType>

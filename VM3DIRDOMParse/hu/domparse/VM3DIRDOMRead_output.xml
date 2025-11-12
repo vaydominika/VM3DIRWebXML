@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- A macskamenhely XML sémája --><VM3DIR_macskamenhely xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="VM3DIR_XMLSchema.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- A macskamenhely XML sémája --><VM3DIR_macskamenhely xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="VM3DIR_XMLSchema.xsd">
 
   <!-- Egészségügyi kartonok adatai, id, macska_ref (idegen kulcs), allatorvos_ref (idegen kulcs), datum, kezeles_tipusa, diagnozis, gyogyszerek, kovetkezo_vizsgalat -->
 
@@ -94,7 +93,7 @@
 
   <!-- Macska 1 -->
   <macska alkalmazott_ref="a1" macska_id="m1">
-    <nev>Foltos</nev>
+    <nev>Cirmos</nev>
     <fajta>Keverék</fajta>
     <szuletes_datum>2023-01-01</szuletes_datum>
     <szin>Fekete-Fehér</szin>
