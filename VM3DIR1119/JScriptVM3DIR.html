@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        button {
+            background-color: #ffc4e9;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 0;
+            cursor: pointer;
+            border: none;
+            border-radius: 2px;
+        }
+        button:hover {
+            background-color: #f3a7d7;
+            transition: background-color 0.3s ease-in-out;
+        }
+        #orarend {
+            margin-top: 20px;
+        }
+        .ora {
+            border: 1px solid #f3a7d7;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 2px;
+            background-color: #ffc4e93f;
+        }
+        .mezo {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>VM3DIR Órarend 2025</h1>
+    <button onclick="betoltOrarend()">Órarend betöltése</button>
+    <div id="orarend"></div>
+
+    <script>
+        function betoltOrarend() {
+            fetch('JSONParseVM3DIR/src/orarendVM3DIR.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('A fájl betöltése sikertelen');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    megjelenitOrarend(data);
+                })
+                .catch(error => {
+                    console.error('Hiba:', error);
+                    document.getElementById('orarend').innerHTML = 
+                        '<p style="color: red;">Hiba történt a fájl betöltése során: ' + error.message + '</p>';
+                });
+        }
+
+        function megjelenitOrarend(data) {
+            const orarendDiv = document.getElementById('orarend');
+
+            const orarend = data.VM3DIR_orarend;
+            const oraArray = orarend.ora;
+
+            oraArray.forEach((ora, index) => {
+                const oraDiv = document.createElement('div');
+                oraDiv.className = 'ora';
+                
+                const idopont = ora.idopont;
+                
+                oraDiv.innerHTML = `
+                    <div class="mezo"><strong>Tárgy:</strong> ${ora.targy}</div>
+                    <div class="mezo"><strong>Nap:</strong> ${idopont.nap}</div>
+                    <div class="mezo"><strong>Időpont:</strong> ${idopont.tol} - ${idopont.ig}</div>
+                    <div class="mezo"><strong>Helyszín:</strong> ${ora.helyszin}</div>
+                    <div class="mezo"><strong>Oktató:</strong> ${ora.oktato}</div>
+                    <div class="mezo"><strong>Szak:</strong> ${ora.szak}</div>
+                `;
+                
+                orarendDiv.appendChild(oraDiv);
+            });
+        }
+    </script>
+</body>
+</html>
+

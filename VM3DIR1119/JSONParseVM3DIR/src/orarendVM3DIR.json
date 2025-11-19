@@ -1,0 +1,149 @@
+{
+  "VM3DIR_orarend": {
+    "ora": [
+      {
+        "targy": "Elektronika-elektrotechnika",
+        "idopont": {
+          "nap": "hétfő",
+          "tol": 8,
+          "ig": 10
+        },
+        "helyszin": "3. előadó",
+        "oktato": "Szabó Norbert",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "Web technológiák 1.",
+        "idopont": {
+          "nap": "hétfő",
+          "tol": 10,
+          "ig": 12
+        },
+        "helyszin": "5. előadó",
+        "oktato": "Agárdi Anita",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "Angol műszaki szaknyelv 1.",
+        "idopont": {
+          "nap": "hétfő",
+          "tol": 12,
+          "ig": 14
+        },
+        "helyszin": "7. előadó",
+        "oktato": "Nagyné Varga Orsolya",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "Web technológiák 1.",
+        "idopont": {
+          "nap": "hétfő",
+          "tol": 14,
+          "ig": 16
+        },
+        "helyszin": "Infó épület 1. emelet 101. terem",
+        "oktato": "Agárdi Anita",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "Mobil programozási alapok",
+        "idopont": {
+          "nap": "hétfő",
+          "tol": 16,
+          "ig": 18
+        },
+        "helyszin": "Infó épület 1. emelet 101. terem",
+        "oktato": "Agárdi Anita",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "Mobil programozási alapok",
+        "idopont": {
+          "nap": "hétfő",
+          "tol": 18,
+          "ig": 20
+        },
+        "helyszin": "Infó épület 1. emelet 101. terem",
+        "oktato": "Agárdi Anita",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "Mesterséges Intelligencia alapok",
+        "idopont": {
+          "nap": "kedd",
+          "tol": 10,
+          "ig": 12
+        },
+        "helyszin": "32. előadó",
+        "oktato": "Kunné Dr. Tamás Judit, Fazekas Levente Áron",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "Mesterséges Intelligencia alapok",
+        "idopont": {
+          "nap": "kedd",
+          "tol": 12,
+          "ig": 14
+        },
+        "helyszin": "32. előadó",
+        "oktato": "Kunné Dr. Tamás Judit, Fazekas Levente Áron",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "Elektrotechnika-elektronika",
+        "idopont": {
+          "nap": "kedd",
+          "tol": 14,
+          "ig": 16
+        },
+        "helyszin": "A1/317.",
+        "oktato": "Dr. Kozsely Gábor",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "UNIX rendszergazda",
+        "idopont": {
+          "nap": "kedd",
+          "tol": 17,
+          "ig": 19
+        },
+        "helyszin": "Infó épület 2. emelet 202. terem",
+        "oktato": "Dr. Baksa Attila",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "UNIX rendszergazda",
+        "idopont": {
+          "nap": "szerda",
+          "tol": 8,
+          "ig": 10
+        },
+        "helyszin": "Infó épület 1. emelet 103. terem",
+        "oktato": "Dr. Baksa Attila",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "Webes adatkezelő környezetek",
+        "idopont": {
+          "nap": "szerda",
+          "tol": 8,
+          "ig": 10
+        },
+        "helyszin": "A1/310,",
+        "oktato": "Dr. Kovács László József",
+        "szak": "Mérnökinformatikus"
+      },
+      {
+        "targy": "Webes adatkezelő környezetek",
+        "idopont": {
+          "nap": "szerda",
+          "tol": 10,
+          "ig": 12
+        },
+        "helyszin": "Infó épület 1. emelet 103. terem",
+        "oktato": "Dr. Bednarik László",
+        "szak": "Mérnökinformatikus"
+      }
+    ]
+  }
+}
