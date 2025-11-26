@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- A macskamenhely XML sémája --><VM3DIR_macskamenhely xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="VM3DIR_XMLSchema.xsd">
+
+  <!-- Egészségügyi kartonok adatai, id, macska_ref (idegen kulcs), allatorvos_ref (idegen kulcs), datum, kezeles_tipusa, diagnozis, gyogyszerek, kovetkezo_vizsgalat -->
+
+  <!-- Egészségügyi karton 1 -->
+  <egeszsegugyi_karton allatorvos_ref="ao1" karton_id="k1" macska_ref="m1">
+    <datum>2023-08-16</datum>
+    <kezeles_tipusa>Általános vizsgálat</kezeles_tipusa>
+    <diagnozis>Egészséges, oltások beadva</diagnozis>
+    <gyogyszerek>Kombinált oltás</gyogyszerek>
+    <kovetkezo_vizsgalat>2024-08-16</kovetkezo_vizsgalat>
+  </egeszsegugyi_karton>
+
+  <egeszsegugyi_karton allatorvos_ref="ao1" karton_id="k2" macska_ref="m2">
+    <datum>2025-01-11</datum>
+    <kezeles_tipusa>Kivételes vizsgálat</kezeles_tipusa>
+    <diagnozis>Betegség, hányás - gyógyult</diagnozis>
+    <gyogyszerek>Betegség ellenszerek</gyogyszerek>
+    <kovetkezo_vizsgalat>2025-02-11</kovetkezo_vizsgalat>
+  </egeszsegugyi_karton>
+
+  <egeszsegugyi_karton allatorvos_ref="ao1" karton_id="k3" macska_ref="m3">
+    <datum>2025-01-11</datum>
+    <kezeles_tipusa>Kivételes vizsgálat</kezeles_tipusa>
+    <diagnozis>Betegség, láz, fájdalom</diagnozis>
+    <gyogyszerek>Betegség ellenszerek, analgetikum, antipirétikum</gyogyszerek>
+    <kovetkezo_vizsgalat>2025-03-11</kovetkezo_vizsgalat>
+  </egeszsegugyi_karton>
+
+  <egeszsegugyi_karton allatorvos_ref="ao2" karton_id="k4" macska_ref="m4">
+    <datum>2025-01-11</datum>
+    <kezeles_tipusa>Általános vizsgálat</kezeles_tipusa>
+    <diagnozis>Egészséges, oltások beadva</diagnozis>
+    <gyogyszerek>Kombinált oltás</gyogyszerek>
+    <kovetkezo_vizsgalat>2024-08-16</kovetkezo_vizsgalat>
+  </egeszsegugyi_karton>
+
+  <!-- Örökbefogadások (kapcsoló entitás, ID nélkül) - macska_ref és orokbefogado_ref attribútumokkal -->
+  
+  <!-- Örökbefogadás 1 -->
+  <orokbefogadas macska_ref="m1" orokbefogado_ref="o1">
+    <orokbefogadas_datuma>2025-10-22</orokbefogadas_datuma>
+    <orokbefogasi_dij>10000</orokbefogasi_dij>
+    <statusz>Befejezett</statusz>
+    <megjegyzesek>Kiváló otthon, rendszeres kapcsolattartás</megjegyzesek>
+  </orokbefogadas>
+
+  <!-- Örökbefogadás 2 -->
+  <orokbefogadas macska_ref="m2" orokbefogado_ref="o2">
+    <orokbefogadas_datuma>2025-05-11</orokbefogadas_datuma>
+    <orokbefogasi_dij>20000</orokbefogasi_dij>
+    <statusz>Jóváhagyva</statusz>
+    <megjegyzesek>Folyamatban a vizsgálat a megfelelő tartásra</megjegyzesek>
+  </orokbefogadas>
+
+  <!-- Örökbefogadók adatai, id, teljes név, cím, telefonszam, email, születési dátum -->
+
+  <!-- Örökbefogadó 1 -->
+  <orokbefogado orokbefogado_id="o1">
+    <teljes_nev>
+      <vezeteknev>Teszt vezetéknév 1</vezeteknev>
+      <keresztnev>Teszt keresztnev 1</keresztnev>
+    </teljes_nev>
+    <cim>
+      <iranyitoszam>3529</iranyitoszam>
+      <varos>Miskolc</varos>
+      <utca>Csermőkei út</utca>
+      <hazszam>1</hazszam>
+    </cim>
+    <telefonszam>+36301234567</telefonszam>
+    <email>teszt.email.1@email.hu</email>
+    <szuletes_datum>2000-01-01</szuletes_datum>
+  </orokbefogado>
+
+  <!-- Örökbefogadó 2 -->
+  <orokbefogado orokbefogado_id="o2">
+    <teljes_nev>
+      <vezeteknev>Teszt vezetéknév 2</vezeteknev>
+      <keresztnev>Teszt keresztnev 2</keresztnev>
+    </teljes_nev>
+    <cim>
+      <iranyitoszam>3529</iranyitoszam>
+      <varos>Miskolc</varos>
+      <utca>Derkovits Gyula utca</utca>
+      <hazszam>23</hazszam>
+    </cim>
+    <telefonszam>+36301234568</telefonszam>
+    <email>teszt.email.2@email.hu</email>
+    <szuletes_datum>1990-01-01</szuletes_datum>
+  </orokbefogado>
+
+  <!-- Macskák adatai, id, nev, fajta, születési dátum, szín, nem, bekerülési dátum, alkalmazott_ref (idegen kulcs) -->
+
+  <!-- Macska 1 -->
+  <macska alkalmazott_ref="a1" macska_id="m1">
+    <nev>Foltos</nev>
+    <fajta>Keverék</fajta>
+    <szuletes_datum>2023-01-01</szuletes_datum>
+    <szin>Fekete-Fehér</szin>
+    <nem>nőstény</nem>
+    <bekerulesi_datum>2025-01-01</bekerulesi_datum>
+  </macska>
+
+  <!-- Macska 2 -->
+  <macska alkalmazott_ref="a1" macska_id="m2">
+    <nev>Zokni</nev>
+    <fajta>Keverék</fajta>
+    <szuletes_datum>2024-01-01</szuletes_datum>
+    <szin>Fekete-Fehér</szin>
+    <nem>hím</nem>
+    <bekerulesi_datum>2025-03-01</bekerulesi_datum>
+  </macska>
+
+  <!-- Macska 3 -->
+  <macska alkalmazott_ref="a2" macska_id="m3">
+    <nev>Morcos</nev>
+    <fajta>Perzsa</fajta>
+    <szuletes_datum>2022-01-01</szuletes_datum>
+    <szin>Szürke</szin>
+    <nem>nőstény</nem>
+    <bekerulesi_datum>2025-05-01</bekerulesi_datum>
+  </macska>
+
+  <!-- Macska 4 -->
+  <macska alkalmazott_ref="a3" macska_id="m4">
+    <nev>Rózsa</nev>
+    <fajta>Sziámi</fajta>
+    <szuletes_datum>2019-01-01</szuletes_datum>
+    <szin>Fehér-Barna</szin>
+    <nem>nőstény</nem>
+    <bekerulesi_datum>2025-07-01</bekerulesi_datum>
+  </macska>
+
+  <!-- Alkalmazottak adatai, id, teljes név, cím, telefonszam, beosztas, belepes_datuma, fizetes -->
+
+  <!-- Alkalmazott 1 -->
+  <alkalmazott alkalmazott_id="a1">
+    <teljes_nev>
+      <vezeteknev>Gondozó</vezeteknev>
+      <keresztnev>Neve</keresztnev>
+    </teljes_nev>
+    <cim>
+      <iranyitoszam>3529</iranyitoszam>
+      <varos>Miskolc</varos>
+      <utca>Áfonyás utca</utca>
+      <hazszam>1</hazszam>
+    </cim>
+    <telefonszam>+36301234567</telefonszam>
+    <beosztas>Gondozó</beosztas>
+    <belepes_datuma>2025-01-01</belepes_datuma>
+    <fizetes>300000</fizetes>
+  </alkalmazott>
+
+  <!-- Alkalmazott 2 -->
+  <alkalmazott alkalmazott_id="a2">
+    <teljes_nev>
+      <vezeteknev>Gondozó</vezeteknev>
+      <keresztnev>Neve 2</keresztnev>
+    </teljes_nev>
+    <cim>
+      <iranyitoszam>3529</iranyitoszam>
+      <varos>Miskolc</varos>
+      <utca>Károlyi Miklós utca</utca>
+      <hazszam>2</hazszam>
+    </cim>
+    <telefonszam>+36301234568</telefonszam>
+    <beosztas>Gondozó</beosztas>
+    <belepes_datuma>2025-01-01</belepes_datuma>
+    <fizetes>300000</fizetes>
+  </alkalmazott>
+
+  <!-- Alkalmazott 3 -->
+  <alkalmazott alkalmazott_id="a3">
+    <teljes_nev>
+      <vezeteknev>Orvos asszisztens</vezeteknev>
+      <keresztnev>Neve</keresztnev>
+    </teljes_nev>
+    <cim>
+      <iranyitoszam>3529</iranyitoszam>
+      <varos>Miskolc</varos>
+      <utca>Csabai kapu</utca>
+      <hazszam>5</hazszam>
+    </cim>
+    <telefonszam>+36301112233</telefonszam>
+    <beosztas>Orvos asszisztens</beosztas>
+    <belepes_datuma>2015-03-15</belepes_datuma>
+    <fizetes>400000</fizetes>
+  </alkalmazott>
+
+  <!-- Állatorvosok adatai, id, teljes név, szakkepesites(ek), rendelo_neve, telefonszam, email -->
+
+  <!-- Állatorvos 1 -->
+  <allatorvos allatorvos_id="ao1">
+    <teljes_nev>
+      <vezeteknev>Dr. Orvos</vezeteknev>
+      <keresztnev>Neve</keresztnev>
+    </teljes_nev>
+    <szakkepesites>
+      <szakkepesites>Állatorvos diploma</szakkepesites>
+      <szakkepesites>Kisállat sebészet</szakkepesites>
+      <szakkepesites>Orvos diploma</szakkepesites>
+    </szakkepesites>
+    <rendelo_neve>Orvos Állatklinika</rendelo_neve>
+    <telefonszam>+36309999999</telefonszam>
+    <email>orvos.neve@allatklinika.hu</email>
+  </allatorvos>
+
+  <!-- Állatorvos 2 -->
+  <allatorvos allatorvos_id="ao2">
+    <teljes_nev>
+      <vezeteknev>Dr. Orvos</vezeteknev>
+      <keresztnev>Neve 2</keresztnev>
+    </teljes_nev>
+    <szakkepesites>
+      <szakkepesites>Állatorvos diploma</szakkepesites>
+      <szakkepesites>Kisállat sebészet</szakkepesites>
+    </szakkepesites>
+    <rendelo_neve>Orvos 2 Állatklinika</rendelo_neve>
+    <telefonszam>+36301234000</telefonszam>
+    <email>orvos.neve2@allatklinika.hu</email>
+  </allatorvos>
+
+</VM3DIR_macskamenhely>
