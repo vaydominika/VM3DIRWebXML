@@ -82,7 +82,7 @@ public class VM3DIRDOMRead {
                     if (kovetkezoNode != null) {
                         System.out.println("Következő vizsgálat: " + kovetkezoNode.getTextContent());
                     }
-                    System.out.println("---\n");
+                    System.out.println("-----------------------------------\n");
                 }
             }
             
@@ -118,7 +118,7 @@ public class VM3DIRDOMRead {
                     if (megjegyzesekNode != null) {
                         System.out.println("Megjegyzések: " + megjegyzesekNode.getTextContent());
                     }
-                    System.out.println("---\n");
+                    System.out.println("-----------------------------------\n");
                 }
             }
             
@@ -211,7 +211,7 @@ public class VM3DIRDOMRead {
                     if (bekerulesiDatumNode != null) {
                         System.out.println("Bekerülési dátum: " + bekerulesiDatumNode.getTextContent());
                     }
-                    System.out.println("---\n");
+                    System.out.println("-----------------------------------\n");
                 }
             }
             
@@ -266,7 +266,7 @@ public class VM3DIRDOMRead {
                     if (fizetesNode != null) {
                         System.out.println("Fizetés: " + fizetesNode.getTextContent());
                     }
-                    System.out.println("---\n");
+                    System.out.println("-----------------------------------\n");
                 }
             }
             
@@ -315,7 +315,7 @@ public class VM3DIRDOMRead {
                     if (emailNode != null) {
                         System.out.println("Email: " + emailNode.getTextContent());
                     }
-                    System.out.println("---\n");
+                    System.out.println("-----------------------------------\n");
                 }
             }
             

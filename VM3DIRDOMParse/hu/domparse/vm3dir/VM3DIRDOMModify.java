@@ -73,8 +73,8 @@ public class VM3DIRDOMModify {
                     Node telefonszamNode = allatorvos.getElementsByTagName("telefonszam").item(0);
                     if (telefonszamNode != null) {
                         String regiTelefon = telefonszamNode.getTextContent();
-                        telefonszamNode.setTextContent("+36309999999");
-                        System.out.println("  * Állatorvos ao1 telefonszáma módosítva: '" + regiTelefon + "' -> '+36309999999'");
+                        telefonszamNode.setTextContent("+36309999991");
+                        System.out.println("  * Állatorvos ao1 telefonszáma módosítva: '" + regiTelefon + "' -> '+36309999991'");
                     }
                     break;
                 }
